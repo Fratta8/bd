@@ -1,0 +1,57 @@
+-- 1. Criação do banco de dados
+CREATE DATABASE atividadesetembro;
+
+-- 2. Seleção do banco de dados
+USE atividadesetembro;
+
+-- 3. Criação da tabela funcionarios
+CREATE TABLE funcionarios (
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cargo VARCHAR(50),
+    salario DECIMAL(10, 2)
+);
+
+-- 4. Inserção de 6 funcionários
+INSERT INTO funcionarios (nome, cargo, salario) VALUES 
+('Ana Silva', 'Gerente', 4500.00),
+('Carlos Oliveira', 'Coordenador', 3500.00),
+('Marcos Lima', 'Assistente', 2500.00),
+('Juliana Costa', 'Gerente', 5500.00),
+('Paulo Souza', 'Coordenador', 3800.00),
+('Raquel Santos', 'Assistente', 2900.00);
+
+-- 5. Consultas solicitadas:
+
+-- 5.1. Retorne uma coluna chamada maior, constando o maior salário dos funcionários
+SELECT MAX(salario) AS maior FROM funcionarios;
+
+-- 5.2. Retorne a coluna nome dos funcionários em letras maiúsculas
+SELECT UPPER(nome) AS nome_maiusculo FROM funcionarios;
+
+-- 5.3. Retorne a coluna cargo em letras minúsculas
+SELECT LOWER(cargo) AS cargo_minusculo FROM funcionarios;
+
+-- 5.4. Retorne uma coluna, constando a soma dos salários dos funcionários
+SELECT SUM(salario) AS soma_salarios FROM funcionarios;
+
+-- 5.5. Retorne uma coluna, constando a média dos salários dos funcionários
+SELECT AVG(salario) AS media_salarios FROM funcionarios;
+
+-- 5.6. Liste os nomes dos funcionários que começam com a letra A
+SELECT nome FROM funcionarios WHERE nome LIKE 'A%';
+
+-- 5.7. Liste os nomes dos funcionários que terminam com a letra 'o' e possuem salários acima de R$ 3000,00
+SELECT nome FROM funcionarios WHERE nome LIKE '%o' AND salario > 3000;
+
+-- 5.8. Liste os nomes dos funcionários com cargos iguais a 'gerente' ou 'coordenador'
+SELECT nome FROM funcionarios WHERE cargo IN ('gerente', 'coordenador');
+
+-- 5.9. Retorne a quantidade de funcionários com salários inferiores ou iguais a R$ 7000,00
+SELECT COUNT(*) AS quantidade_funcionarios FROM funcionarios WHERE salario <= 7000;
+
+-- 5.10. Apague a tabela criada
+DROP TABLE funcionarios;
+
+-- 5.11. Apague o banco de dados criado
+DROP DATABASE atividadesetembro;
